@@ -4,7 +4,8 @@ const resolve = (...args) => path.resolve(__dirname, ...args)
 
 const config = {
   mode: 'development',
-  entry: resolve('src/mobx-demo.jsx'),
+  // entry: resolve('src/mobx-demo.jsx'),
+  entry: resolve('src/todo-list.jsx'),
   output: {
     path: resolve('dist'),
     filename: 'bundle.js'
@@ -24,6 +25,10 @@ const config = {
             ]
           }
         }
+      },
+      {
+        test: /\.less$/,
+        use: ['style-loader', 'css-loader', 'less-loader']
       }
     ]
   },
