@@ -1,21 +1,23 @@
 const path = require('path')
 
+const resolve = (...args) => path.resolve(__dirname, ...args)
+
 const config = {
   mode: 'development',
-  entry: path.resolve(__dirname, 'src/index.js'),
+  entry: resolve('src/mobx-demo.jsx'),
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'main.js'
+    path: resolve('dist'),
+    filename: 'bundle.js'
   },
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env'],
+            presets: ['@babel/preset-env', '@babel/preset-react'],
             plugins: [
               ["@babel/plugin-proposal-decorators", { "legacy": true }],
               ["@babel/plugin-proposal-class-properties", { "loose": true }]
